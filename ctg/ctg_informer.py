@@ -22,6 +22,8 @@ class CTG_Informer(CTG_Basic):
     def __init__(self, args):
         super(CTG_Informer, self).__init__(args)
     
+    print("Building model: Informer")  # Debugging message
+
     def _build_model(self):
         model_dict = {
             'informer':Informer,
@@ -56,7 +58,7 @@ class CTG_Informer(CTG_Basic):
         if self.args.use_multi_gpu and self.args.use_gpu:
             model = nn.DataParallel(model, device_ids=self.args.device_ids)
         return model
-
+    
     def _get_data(self, flag):
         args = self.args
 
